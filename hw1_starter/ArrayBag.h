@@ -25,6 +25,7 @@ private:
 
 public:
 	ArrayBag();
+	ArrayBag(const ItemType arr[], int size);
 	int getCurrentSize() const;
 	bool isEmpty() const;
 	bool add(const ItemType& newEntry);
@@ -33,6 +34,7 @@ public:
 	bool contains(const ItemType& anEntry) const;
 	int getFrequencyOf(const ItemType& anEntry) const;
     std::vector<ItemType> toVector() const;
+	bool replace(const ItemType& anEntry, const ItemType& newEntry); // replace()
 }; // end ArrayBag
 
 #include "ArrayBag.cpp"

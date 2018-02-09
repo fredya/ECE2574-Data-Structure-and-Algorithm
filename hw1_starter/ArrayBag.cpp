@@ -8,6 +8,18 @@
 #include <cstddef>
 
 template<class ItemType>
+ArrayBag<ItemType>::ArrayBag(const ItemType arr[], int size)
+{
+	itemCount = 0;
+	maxItems = size;
+	for (int i = 0; i < size; i++)
+	{
+		items[i] = arr[i];
+		itemCount++;
+	}
+}
+
+template<class ItemType>
 ArrayBag<ItemType>::ArrayBag(): itemCount(0), maxItems(DEFAULT_CAPACITY)
 {
 }  // end default constructor
@@ -162,3 +174,22 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
    
    return result;
 }  // end getIndexOf
+
+
+// replace
+template<class ItemType>
+bool ArrayBag<ItemType>::replace(const ItemType& anEntry, const ItemType& newEntry)
+{
+	int frequency = getFrequencyOf(anEntry);
+	bool result = 0;
+	if (frequency > 0)
+	{
+		for (int i = 0; i < frequency; i++)
+		{
+			items[getIndexOf(anEntry)] = newEntry;
+		}
+		result = 1;
+	}
+		return result;
+	
+}	// end replace
