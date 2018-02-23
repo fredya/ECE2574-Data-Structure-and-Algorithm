@@ -69,7 +69,7 @@ bool Poly<ItemType>::insert(const ItemType x, const ItemType y, int index)
 	bool canInsert = (index > -1 && index < pointCount + 1);
 	if (canInsert)
 	{
-		Node<ItemType>* curPtr = new Node<ItemType>();
+		Node<ItemType>* curPtr;
 		Node<ItemType>* newNodePtr = new Node<ItemType>();
 		newNodePtr->setX(x);
 		newNodePtr->setY(y);
@@ -94,6 +94,8 @@ bool Poly<ItemType>::insert(const ItemType x, const ItemType y, int index)
 			curPtr->setNext(newNodePtr);
 			pointCount++;
 		}
+		//delete curPtr;
+		//curPtr = nullptr;
 	}
     return canInsert;
 }  // end add
@@ -106,7 +108,7 @@ bool Poly<ItemType>::remove(const int index)
 	bool canRemove = ((!isEmpty()) && index < pointCount && index > -1);
 	if (canRemove)
 	{
-		Node<ItemType>* curPtr = new Node<ItemType>();
+		Node<ItemType>* curPtr;
 		Node<ItemType>* nodeToDeletePtr = new Node<ItemType>();
 		
 		bool isLastNode = (index == pointCount - 1);
@@ -165,7 +167,7 @@ void Poly<ItemType>::clear()
 template<class ItemType>
 ItemType Poly<ItemType>::getCoordinateX(const int index) const
 {
-	Node<ItemType>* curPtr = new Node<ItemType>();
+	Node<ItemType>* curPtr;
 	bool canGetX = ((!isEmpty()) && index < pointCount && index > -1);
 	if (canGetX)
 	{
@@ -194,7 +196,7 @@ ItemType Poly<ItemType>::getCoordinateX(const int index) const
 template<class ItemType>
 ItemType Poly<ItemType>::getCoordinateY(const int index) const
 {
-	Node<ItemType>* curPtr = new Node<ItemType>();
+	Node<ItemType>* curPtr;
 	bool canGetY = ((!isEmpty()) && index < pointCount && index > -1);
 	if (canGetY)
 	{
@@ -247,7 +249,7 @@ double Poly<ItemType>::getArcLength() const
 template<class ItemType>
 bool Poly<ItemType>::translate(const ItemType deltaX, const ItemType deltaY)
 {
-	Node<ItemType>* curPtr = new Node<ItemType>();
+	Node<ItemType>* curPtr;
 	bool canTranslate = !isEmpty();
 	if (canTranslate)
 	{
@@ -400,7 +402,7 @@ Poly<ItemType>& Poly<ItemType>::operator=(const Poly<ItemType>& rightHandSide)
 template<class ItemType>
 Node<ItemType> *Poly<ItemType>::getPointerTo(const int index) const
 {
-   Node<ItemType>* curPtr = new Node<ItemType>();
+   Node<ItemType>* curPtr;
    curPtr = headPtr;
    int count = 0; // used for while loop
 	   while (count < index - 1)
